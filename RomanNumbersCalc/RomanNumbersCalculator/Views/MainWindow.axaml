@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RomanNumbersCalculator.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:sys="using:System"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="400"
+		Width="300" Height="400"
+        x:Class="RomanNumbersCalculator.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RomanNumbersCalculator">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Window.Styles>
+		<Style Selector="Button.h1">
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="CornerRadius" Value="0"/>
+			<Setter Property="FontSize" Value="30"/>
+		</Style>
+	</Window.Styles>
+	
+	<Grid ColumnDefinitions="*, *, *, *" RowDefinitions="*, *, *, *, *">
+		<TextBlock Name="textResult" Text="{Binding CurrentNumberStringRepresentation}" FontSize="50" VerticalAlignment="Center" TextAlignment="Right" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"/>
+		<Button Name="buttonI" Content="I" Classes="h1" Grid.Row="1" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="I"/>
+		<Button Name="buttonV" Content="V" Classes="h1" Grid.Row="2" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="V"/>
+		<Button Name="buttonX" Content="X" Classes="h1" Grid.Row="3" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="X"/>
+		<Button Name="buttonL" Content="L" Classes="h1" Grid.Row="4" Grid.Column="0" Command="{Binding AddNumber}" CommandParameter="L"/>
+
+		<Button Name="buttonC" Content="C" Classes="h1" Grid.Row="1" Grid.Column="1" Command="{Binding AddNumber}" CommandParameter="C"/>
+		<Button Name="buttonD" Content="D" Classes="h1" Grid.Row="2" Grid.Column="1" Command="{Binding AddNumber}" CommandParameter="D"/>
+		<Button Name="buttonM" Content="M" Classes="h1" Grid.Row="3" Grid.Column="1" Command="{Binding AddNumber}" CommandParameter="M"/>
+		<Button Name="buttonCE" Content="CE" Classes="h1" Grid.Row="4" Grid.Column="1" Command="{Binding ResetCommand}"/>
+
+		<Button Name="buttonPlus" Content="+" Classes="h1" Grid.Row="1" Grid.Column="2" Command="{Binding PlusCommand}"/>
+		<Button Name="buttonSub" Content="-" Classes="h1" Grid.Row="2" Grid.Column="2" Command="{Binding SubCommand}"/>
+		<Button Name="buttonMul" Content="*" Classes="h1" Grid.Row="3" Grid.Column="2" Command="{Binding MulCommand}"/>
+		<Button Name="buttonDiv" Content="/" Classes="h1" Grid.Row="4" Grid.Column="2" Command="{Binding DivCommand}"/>
+
+		<Button Name="buttonResult" Content="=" Classes="h1" Grid.Row="1" Grid.Column="3" Grid.RowSpan="4" Command="{Binding CalculateCommand}"/>
+	</Grid>
+
+</Window>
